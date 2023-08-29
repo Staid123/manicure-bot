@@ -1,0 +1,19 @@
+[tgbot]
+    token
+    skip_updates
+
+[admin]
+    admin_ids
+
+[psql]
+    host
+    port
+    user
+    database
+    password
+
+[redis]
+    host
+    port
+    db
+    password
