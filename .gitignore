@@ -2,3 +2,4 @@
 **/__pycache__
 venv
 /configs/config.toml
+dump.rdb
