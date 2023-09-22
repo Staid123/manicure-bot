@@ -12,8 +12,8 @@ logger = getLogger('manicure.bot')
 
 router = Router()
 router.include_routers(
-    admin_router,
-    user_router
+    admin_router.router,
+    user_router.router
 )
 
 
