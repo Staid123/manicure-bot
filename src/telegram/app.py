@@ -37,7 +37,6 @@ async def start_bot(
     dp.update.middleware(L10NMiddleware(create_translator_hub()))
     dp.update.middleware(DAOMiddleware(pool))
 
-    dp['pool'] = pool
     dp['redis'] = redis
 
     await dp.start_polling(bot)
