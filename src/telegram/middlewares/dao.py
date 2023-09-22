@@ -12,7 +12,7 @@ class DAOMiddleware(BaseMiddleware):
 
     async def __call__(
         self,
-        handler: Callable[[TelegramObject, Dict[str, any]], Awaitable[str, Any]],
+        handler: Callable[[TelegramObject, Dict[str, any]], Awaitable[Any]],
         event: TelegramObject,
         data: Dict[str, Any]
     ) -> Any:
