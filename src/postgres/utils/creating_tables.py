@@ -7,9 +7,9 @@ async def _create_admin_table(connect: Connection) -> None:
         CREATE TABLE IF NOT EXISTS records(
             PRIMARY KEY(id),
             id SERIAL NOT NULL,
-            client_name TEXT,
-            phone_number char(12),
-            type_of_service TEXT,
+            client_name text,
+            phone_number text,
+            type_of_service text,
             datetime timestamp
         );
         '''
@@ -22,9 +22,9 @@ async def _create_user_table(connect: Connection) -> None:
         CREATE TABLE IF NOT EXISTS clients(
             PRIMARY KEY(id),
             id SERIAL NOT NULL,
-            type_of_service TEXT,
-            datetime timestamp,
-            phone_number BIGINT
+            phone_number text,
+            type_of_service text,
+            datetime timestamp
         );
         '''
     )
