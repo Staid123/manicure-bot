@@ -27,11 +27,11 @@ class AdminDAO(AdminAbstractDAO):
         async with connect.transaction():
             data = await connect.fetch(
                 '''
-                SELECT client_name, phone_number, datetime, type_of_service 
+                SELECT client_name, phone_number, datetime, type_of_service
                 FROM records
                 '''
             )
-        return [GetAllRecordsDTO(*i) for i in data]
+        return [GetAllRecordsDTO(**rec) for rec in data]
     
 
     async def delete_record(self, dto: DeleteRecordDTO) -> None:
