@@ -22,6 +22,7 @@ async def _create_user_table(connect: Connection) -> None:
         CREATE TABLE IF NOT EXISTS clients(
             PRIMARY KEY(id),
             id SERIAL NOT NULL,
+            client_id INTEGER,
             phone_number text,
             type_of_service text,
             datetime timestamp
