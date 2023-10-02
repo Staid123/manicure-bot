@@ -2,7 +2,9 @@ from aiogram import Bot, Dispatcher
 from redis.asyncio import Redis
 from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
 from asyncpg import Pool
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
+from src.scheduler import set_scheduled_jobs
 from src.telegram import Config
 from src.telegram.handlers.routers import router
 from src.telegram.middlewares import L10NMiddleware, DAOMiddleware
@@ -19,6 +21,10 @@ async def start_bot(
         token=config.tgbot.token,
         parse_mode='html')
     
+    scheduler = AsyncIOScheduler()
+    await set_scheduled_jobs(scheduler, bot, pool, 
+                       create_translator_hub().get_translator_by_locale('ru'))
+
     if config.tgbot.skip_updates:
         await bot.delete_webhook(drop_pending_updates=True)
     
@@ -39,4 +45,5 @@ async def start_bot(
 
     dp['redis'] = redis
 
+    scheduler.start()
     await dp.start_polling(bot)

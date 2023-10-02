@@ -2,7 +2,7 @@ import asyncio
 import logging
 
 from redis.asyncio import Redis
-from src.telegram import config
+from src.telegram.config import config
 from src.utils import create_postgres_pool
 from src.postgres.utils import creating_tables
 from src.telegram import start_bot
@@ -27,4 +27,4 @@ async def main() -> None:
         await redis.close()
  
 logging.basicConfig(level=logging.DEBUG)
-asyncio.run(main())
+asyncio.run(main()) 
