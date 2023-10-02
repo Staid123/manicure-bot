@@ -27,24 +27,6 @@ async def command_start(
     await state.set_state(state=FSMadmin.fill_yes_no_in_start)
 
 
-'''@router.message(
-    Command(commands=['add_record', 'start']), 
-    ~StateFilter(default_state)
-)
-async def command_start(
-    message: Message, 
-    l10n: TranslatorRunner, 
-    bot: Bot, 
-    state: FSMContext
-    ) -> None:
-    await message.answer(
-        text=l10n.admin.hello(),
-        reply_markup=answer_yes())
-    await set_main_menu(bot, l10n)
-    await state.clear()'''
-    
-
-
 @router.callback_query(
     StateFilter(FSMadmin.fill_yes_no_in_start), 
     F.data=='no'

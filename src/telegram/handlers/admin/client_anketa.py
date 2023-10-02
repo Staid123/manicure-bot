@@ -109,9 +109,6 @@ async def enter_day(
     state: FSMContext,
     l10n: TranslatorRunner,
 ) -> None:
-    data = await state.get_data()
-    month = data.get('month')
-    month_ = l10n.months().split(', ').index(month) + 1
     await state.update_data(date=callback.data)
     await callback.message.edit_text(
         text=l10n.admin.time(),
