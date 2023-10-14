@@ -22,6 +22,9 @@ admin-end = Отлично!
 admin-records = { $name } { $date } { $time } на { $service }
                 номер телефона клиента: { $phone }
 admin-delete-record = Нажмите на запись которую хотите удалить
+admin-send-reminder = { $client_name } получил(а) напоминание о записи
+admin-ready_reminder = Отсылаю напоминания клиентам...
+admin-ready_delete = Удаляю записи...
 rec = { $name } { $date } {$time}
 
 
@@ -65,3 +68,6 @@ no-records = Вы еще не записаны к Татьяне!
 ##reminder
 send-reminder = Здравствуйте, напоминание! 
                 Вы записаны к Татьяне на { $service } { $date }
+
+send-delete-reminder = Удалена запись за { $datetime }
+send-reminder-done = Выполнено успешно ✅️
