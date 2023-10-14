@@ -1,7 +1,7 @@
 from asyncpg import Connection
 from src.core.dto.get_all_users import GetAllRecordsDTO
 from src.core.dao import UserAbstractDAO
-from src.core.dto import GetUserRecordsDTO, InsertrecordDTO
+from src.core.dto import GetUserRecordsDTO, InsertrecordDTO, DeleteRecordDTO
 
 from datetime import datetime
 
@@ -54,3 +54,13 @@ class UserDAO(UserAbstractDAO):
             ''', datetime
         )
         return data[0][0]
+    
+
+    async def delete_records(self, dto: DeleteRecordDTO) -> None:
+        connect = self.connect
+        await connect.execute(
+            '''
+            DELETE FROM clients
+            WHERE datetime = $1
+            ''', dto.datetime
+        )
