@@ -36,9 +36,8 @@ class AdminDAO(AdminAbstractDAO):
 
     async def delete_record(self, dto: DeleteRecordDTO) -> None:
         connect = self.connect
-        async with connect.transaction():
-            await connect.execute(
-                '''
-                DELETE FROM records WHERE datetime = $1
-                ''', dto.datetime
-            )
+        await connect.execute(
+            '''
+            DELETE FROM records WHERE datetime = $1
+            ''', dto.datetime
+        )
