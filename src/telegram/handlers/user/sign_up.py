@@ -41,6 +41,11 @@ async def enter_phone_number(
     data = await dao.user.get_rec_by_phone(
         GetUserRecordsDTO(
             phone_number=phone_number))
+    if data:
+        text: str = get_text2(l10n, data)
+        await message.answer(text=text)
+    else:
+        await message.answer(text=l10n.no.records())
     for rec in data:
         count_records = await dao.user.check_record(rec.datetime)
         if not count_records:
@@ -53,7 +58,3 @@ async def enter_phone_number(
                     client_id=message.from_user.id
                 )
             )
-        text: str = get_text2(l10n, data)
-        await message.answer(text=text)
-    if not data:
-        await message.answer(text=l10n.no.records())
