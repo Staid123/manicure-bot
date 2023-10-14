@@ -23,7 +23,8 @@ async def start_bot(
     
     scheduler = AsyncIOScheduler()
     await set_scheduled_jobs(scheduler, bot, pool, 
-                       create_translator_hub().get_translator_by_locale('ru'))
+                       create_translator_hub().get_translator_by_locale('ru'),
+                       config)
 
     if config.tgbot.skip_updates:
         await bot.delete_webhook(drop_pending_updates=True)
